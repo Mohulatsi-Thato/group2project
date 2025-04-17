@@ -1,0 +1,17 @@
+﻿@model CLDVwebApp.Models.Booking
+
+<h2>Delete Booking</h2>
+
+<dl>
+    <dt>Venue</dt>
+    <dd>@Model.Venue?.VenueName</dd>
+    <dt>Event</dt>
+    <dd>@Model.Event?.EventName</dd>
+    <dt>Date</dt>
+    <dd>@Model.EventDate</dd>
+</dl>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="BookingId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>

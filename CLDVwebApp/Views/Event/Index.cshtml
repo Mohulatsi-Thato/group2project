@@ -1,0 +1,34 @@
+﻿@model IEnumerable<CLDVwebApp.Models.Event>
+
+@{
+    ViewData["Title"] = "Events";
+}
+
+<h2>All Events</h2>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New Event</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Event Name</th>
+            <th>Event Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EventName</td>
+                <td>@item.EventDate.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.EventId">Edit</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.EventId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

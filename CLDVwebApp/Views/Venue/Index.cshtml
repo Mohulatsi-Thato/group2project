@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CLDVwebApp.Models.Venue>
+
+@{
+    ViewData["Title"] = "Venue Index";
+}
+
+<h1>Venue List</h1>
+
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Create", "Venue")">Create New Venue</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().VenueName)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Location)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Capacity)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ImageUrl)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var venue in Model)
+        {
+            <tr>
+                <td>@venue.VenueName</td>
+                <td>@venue.Location</td>
+                <td>@venue.Capacity</td>
+                <td><img src="@venue.ImageUrl" alt="@venue.VenueName" width="50" height="50" /></td>
+                <td>
+                    <a href="@Url.Action("Edit", "Venue", new { id = venue.VenueId })">Edit</a> |
+                    <a href="@Url.Action("Delete", "Venue", new { id = venue.VenueId })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,30 @@
+﻿@model CLDVwebApp.Models.Booking
+
+@{
+    ViewData["Title"] = "Create Booking";
+    var venues = ViewData["Venues"] as List<CLDVwebApp.Models.Venue>;
+    var eventsList = ViewData["Events"] as List<CLDVwebApp.Models.Event>;
+}
+
+<h2>Create Booking</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="EventId" class="control-label">Event</label>
+        <select asp-for="EventId" class="form-control" asp-items="@(new SelectList(eventsList, "EventID", "EventName"))">
+            <option value="">-- Select Event --</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="VenueId" class="control-label">Venue</label>
+        <select asp-for="VenueId" class="form-control" asp-items="@(new SelectList(venues, "VenueID", "VenueName"))">
+            <option value="">-- Select Venue --</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="EventDate" class="control-label">Booking Date</label>
+        <input asp-for="EventDate" class="form-control" type="datetime-local" />
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
